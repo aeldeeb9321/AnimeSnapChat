@@ -9,8 +9,14 @@ import UIKit
 
 class HeaderView: UICollectionReusableView{
     //MARK: - Properties
+    var sectionType: SectionType?{
+        didSet{
+            guard let section = sectionType else{ return }
+            self.titleLabel.text = section.description
+        }
+    }
     private let titleLabel: UILabel = {
-        let label = UILabel().makeLabel(withText: "Stories",textColor: .lightGray, withFont: UIFont.boldSystemFont(ofSize: 14))
+        let label = UILabel().makeLabel(textColor: .lightGray, withFont: UIFont.boldSystemFont(ofSize: 14))
         return label
     }()
     
@@ -28,7 +34,6 @@ class HeaderView: UICollectionReusableView{
     //MARK: - Helpers
     private func configureCellComponents(){
         addSubview(titleLabel)
-        titleLabel.centerY(inView: self)
-        titleLabel.anchor(leading: safeAreaLayoutGuide.leadingAnchor, paddingLeading: 6)
+        titleLabel.anchor(leading: safeAreaLayoutGuide.leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, paddingLeading: 6, paddingBottom: 6)
     }
 }

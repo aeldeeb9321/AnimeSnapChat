@@ -71,6 +71,7 @@ extension UILabel{
         label.font = font
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }
     
